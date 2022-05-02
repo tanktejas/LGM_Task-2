@@ -1,28 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 
 class ProfileCard extends React.Component {
   render() {
+    // console.log(this.props.cover);
     return (
       <div id="card">
         <div className="personal">
-          <Avatar image="https://raw.githubusercontent.com/JustMonk/codepen-resource-project/master/img/pixel%20avatar.png" />
+          <Avatar image={this.props.cover} />
           <NameHolder name={this.props.name} career={this.props.career} />
         </div>
-        <Info
-          pens={this.props.pens}
-          posts={this.props.posts}
-          projects={this.props.projects}
-        />
+        <Info email={this.props.email} />
         <Skills skills={this.props.skills} />
-        <Followers
-          followers={this.props.followers}
-          following={this.props.following}
-        />
-        <RandomizeButton />
       </div>
     );
   }
@@ -160,23 +149,9 @@ function NameHolder(props) {
 function Info(props) {
   return (
     <div className="info">
-      <span>Pens: {props.pens}</span>
-      <span>Posts: {props.posts}</span>
-      <span>Projects: {props.projects}</span>
+      <span>email: {props.email}</span>
     </div>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App
-       
-    />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+export default ProfileCard;
